@@ -13,17 +13,18 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) { }
 
-  get authState(): any {
-    return this.afAuth.auth.currentUser;
-  }
-
   get isAuthenticated(): boolean {
     return this.afAuth.auth.currentUser !== null;
   }
 
   get currentUser() {
-    const uid = this.authState['uid'];
+    const uid = this.currentUserId;
     return this.db.object(`users/${uid}`);
+  }
+
+  get currentUserId(): string {
+    const authState = this.afAuth.auth.currentUser;
+    return this.isAuthenticated ? authState['uid'] : '';
   }
 
   set setUser(user: User) {
@@ -44,13 +45,17 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  signOutUser(): Promise<any> {
-    return this.afAuth.auth.signOut();
+  signOutUser(): void {
+    this.afAuth.auth.signOut().then((auth) => {
+      this.router.navigate(['/'])
+    }).catch((e) => {
+      console.log(e);
+    });
   }
 
 
   private newUser(user: User): void {
-    const uid = this.authState['uid'];
+    const uid = this.currentUserId;
 
     this.db.object(`users/${uid}`)
       .update(user)

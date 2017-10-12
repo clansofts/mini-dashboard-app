@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyCye3MoWaDR3CHgK7wcvwzmiYH9nK_V4EM",
-    authDomain: "workshop-app-dc1ff.firebaseapp.com",
-    databaseURL: "https://workshop-app-dc1ff.firebaseio.com",
-    projectId: "workshop-app-dc1ff",
+    apiKey: "AIzaSyCT2Fv5xBUheQqqw0dHEWu8bQPSRlceRtk",
+    authDomain: "workshop-app-9db3a.firebaseapp.com",
+    databaseURL: "https://workshop-app-9db3a.firebaseio.com",
+    projectId: "workshop-app-9db3a",
     storageBucket: "",
-    messagingSenderId: "44093758319"
+    messagingSenderId: "255210870332"
   }
 };

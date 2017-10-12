@@ -1,8 +1,24 @@
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="text-muted">Last updated, 2 days ago</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<h3>My posts</h3>
+
+<hr>
+
+<div *ngFor="let post of newPost | async">
+  <div class="card">
+    <div class="card-body">
+      <img src="" alt="">
+      <h4 class="card-title"><em>Posted by: </em>{{ post.user_fullName }}</h4>
+      <small class="card-title text-muted"><em>UID: </em>{{ post.user_uid }}</small>
+      <br>
+      <img src="{{ post.imgUrl }}" alt="{{ post.user_uid }}" class="w-50">
+      <h4 class="card-title">{{ post.title }}</h4>
+      <p class="card-text">{{ post.description }}</p>
+      <span>Tags</span>
+      <span *ngFor="let tag of post.tags">
+        <span class="text-muted">{{ tag }},</span>
+      </span>
+    </div>
   </div>
+
+  <hr>
+
 </div>

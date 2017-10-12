@@ -16,10 +16,17 @@ const routes: Routes = [
     canActivate: [DashboardGuard],
     resolve: { data: DashboardResolver },
     children: [
-      { path: '', component: MainPageComponent },
-      { path: 'profile', component: UserProfileComponent },
-      { path: 'album', component: AlbumComponent }
-    ]
+      {
+        path: '', component: MainPageComponent,
+        resolve: { data: DashboardResolver } 
+      }, {
+        path: 'profile', component: UserProfileComponent,
+        resolve: { data: DashboardResolver }
+      }, {
+        path: 'album', component: AlbumComponent,
+        resolve: { data: DashboardResolver }
+      }
+ ]
   }
 ];
 

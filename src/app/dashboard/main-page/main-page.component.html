@@ -1,3 +1,7 @@
+<h3>All posts</h3>
+
+<hr>
+
 <button type="button" class="btn btn-info" (click)="onPost()">Create Post</button>
 
 <div *ngIf="isPostClick">
@@ -41,8 +45,8 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-success">Post</button>
-        <button type="button" class="btn btn-success" (click)="onUpdatePost()">Update Post</button>
+        <button type="submit" class="btn btn-success" *ngIf="!isGoingToUpdate">Post</button>
+        <button type="button" class="btn btn-success" (click)="onUpdatePost()" *ngIf="isGoingToUpdate">Update Post</button>
         <button type="button" class="btn btn-danger" (click)="onCancelPost()">Cancel</button>
       </form>
 
@@ -50,12 +54,16 @@
   </div>
 </div>
 
+<hr>
+
 <div *ngFor="let post of newPost | async">
   <div class="card">
     <div class="card-body">
       <img src="" alt="">
       <h4 class="card-title"><em>Posted by: </em>{{ post.user_fullName }}</h4>
-      <small class="card-title text-muted"><em>{{ post.user_fullName }} UID: </em>{{ post.user_uid }}</small>
+      <small class="card-title text-muted"><em>UID: </em>{{ post.user_uid }}</small>
+      <br>
+      <img src="{{ post.imgUrl }}" alt="{{ post.user_uid }}" class="w-50">
       <h4 class="card-title">{{ post.title }}</h4>
       <p class="card-text">{{ post.description }}</p>
       <span>Tags</span>
@@ -69,4 +77,7 @@
       <button type="button" class="btn btn-danger" (click)="onDeletePost(post.key)">Delete</button>
     </div>
   </div>
+
+  <hr>
+
 </div>

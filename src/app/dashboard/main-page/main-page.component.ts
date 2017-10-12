@@ -18,6 +18,7 @@ export class MainPageComponent implements OnInit {
   private key: string;
 
   public isPostClick: boolean = false;
+  public isGoingToUpdate: boolean = false;
   public newPostRef: AngularFireList<any>;
   public newPost: Observable<any[]>;
   public documentForm: FormGroup;
@@ -37,7 +38,7 @@ export class MainPageComponent implements OnInit {
 
     this.newPost = this.db.list('post').snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    });;
+    });
   }
 
   onAddTag() {
@@ -64,6 +65,7 @@ export class MainPageComponent implements OnInit {
 
   onCancelPost() {
     this.isPostClick = false;
+    this.isGoingToUpdate = true;
     this.empty();
   }
 
@@ -82,6 +84,7 @@ export class MainPageComponent implements OnInit {
       'description': post.description,
       'tags': post.tags
     })
+    this.isGoingToUpdate = true;
   }
 
   onUpdatePost() {
@@ -92,6 +95,7 @@ export class MainPageComponent implements OnInit {
       tags: this.tags,
     }
     this.newPostRef.update(this.key, updatedPost);
+    this.isGoingToUpdate = false;
     this.empty();
   }
 

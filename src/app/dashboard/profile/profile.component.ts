@@ -21,8 +21,6 @@ export class ProfileComponent implements OnInit {
     this.route.data.subscribe( (response: Data) => {
       this.user = response.data;
     })
-
-    // console.log(this.user);
   }
 
 }
