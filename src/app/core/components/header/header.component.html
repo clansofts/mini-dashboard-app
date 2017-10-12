@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" (click)="onHeader()">Game of Thrones</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
+
+      <ul class="navbar-nav ml-auto" *ngIf="isAuthenticated">
+        <li class="nav-item active" (click)="onDashboard()">
+          <a class="nav-link">Dashboard</a>
+        </li>
+        <li class="nav-item active" (click)="onProfile()">
+          <a class="nav-link">Profile</a>
+        </li>
+        <li class="nav-item active" (click)="onAlbum()">
+          <a class="nav-link">Album</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+            Actions
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item">Create Character</a>
+            <a class="dropdown-item">Read Character</a>
+            <a class="dropdown-item">Update Character</a>
+            <a class="dropdown-item">Delete Character</a>
+          </div>
+        </li>
+        <li class="nav-item" (click)="onSignout()">
+          <a class="nav-link">Logout</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto" *ngIf="!isAuthenticated">
+        <li class="nav-item" (click)="onRegister()">
+          <a class="nav-link">Register</a>
+        </li>
+        <li class="nav-item" (click)="onLogin()">
+          <a class="nav-link">Login</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>

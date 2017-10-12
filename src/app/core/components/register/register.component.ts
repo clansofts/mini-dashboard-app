@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
+
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
+})
+export class RegisterComponent implements OnInit {
+
+  registerForm: FormGroup;
+  email: AbstractControl;
+  password: AbstractControl;
+
+  tags: string[] = [];
+
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {
+    this.registerForm = new FormGroup({
+      'email': new FormControl(null, [ Validators.required, Validators.email ]),
+      'password': new FormControl(null, [ Validators.required, Validators.minLength(6) ]),
+      'fullName': new FormControl(null, [ Validators.required ]),
+      'gender': new FormControl(null, [ Validators.required]),
+      'tags': new FormControl(null, [ Validators.required]),
+    });
+
+    this.email = this.registerForm.controls.email;
+    this.password = this.registerForm.controls.password;
+  }
+
+  onAddTag() {
+    const tag = this.registerForm.get('tags').value;
+    this.tags.push(tag);
+    console.log(this.tags);
+  }
+
+  onSubmit() {
+    const email = this.email.value;
+    const password = this.password.value;
+
+
+    this.registerForm.value['tags'] = this.tags;
+
+    console.log(this.registerForm.valid);
+
+    if (this.registerForm.valid) {
+      this.authService.setUser = this.registerForm.value;
+      this.authService.signUpUser(email, password);
+    }
+  }
+
+}

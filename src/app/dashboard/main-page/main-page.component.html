@@ -1,0 +1,72 @@
+<button type="button" class="btn btn-info" (click)="onPost()">Create Post</button>
+
+<div *ngIf="isPostClick">
+  <div class="row">
+    <div class="col">
+
+      <form (ngSubmit)="onCreatePost()" [formGroup]="documentForm">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" formControlName="title">
+        </div>
+        <div class="form-group">
+          <label>Image</label>
+          <input type="text" class="form-control" formControlName="imgUrl">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" formControlName="description">
+        </div>
+        <div class="form-group">
+          <label>Tags</label>
+          <div class="row">
+            <div class="col-8">
+              <input type="text" class="form-control" formControlName="tags">
+            </div>
+            <div class="col-4 d-flex">
+              <button type="button" class="btn btn-info ml-auto w-100" (click)="onAddTag()">Add tag</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h4>
+                    <span class="badge badge-primary" *ngFor="let tag of tags; let i = index">
+                      <div (click)="onRemoveTag(i)">{{ tag }}</div>
+                    </span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Post</button>
+        <button type="button" class="btn btn-success" (click)="onUpdatePost()">Update Post</button>
+        <button type="button" class="btn btn-danger" (click)="onCancelPost()">Cancel</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let post of newPost | async">
+  <div class="card">
+    <div class="card-body">
+      <img src="" alt="">
+      <h4 class="card-title"><em>Posted by: </em>{{ post.user_fullName }}</h4>
+      <small class="card-title text-muted"><em>{{ post.user_fullName }} UID: </em>{{ post.user_uid }}</small>
+      <h4 class="card-title">{{ post.title }}</h4>
+      <p class="card-text">{{ post.description }}</p>
+      <span>Tags</span>
+      <span *ngFor="let tag of post.tags">
+        <span class="text-muted">{{ tag }},</span>
+      </span>
+
+      <br>
+
+      <button type="button" class="btn btn-success" (click)="onUpdate(post.key, post)">Update</button>
+      <button type="button" class="btn btn-danger" (click)="onDeletePost(post.key)">Delete</button>
+    </div>
+  </div>
+</div>
