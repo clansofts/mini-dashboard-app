@@ -41,10 +41,7 @@ export class RegisterComponent implements OnInit {
     const email = this.email.value;
     const password = this.password.value;
 
-
     this.registerForm.value['tags'] = this.tags;
-
-    console.log(this.registerForm.valid);
 
     if (this.registerForm.valid) {
       this.authService.setUser = this.registerForm.value;

@@ -27,18 +27,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.valid);
-
-    console.log(this.email.errors);
-    console.log(this.password.errors);
-
     const email = this.email.value;
     const password = this.password.value;
 
     if (this.loginForm.valid) {
       this.authService.signInUser(email, password)
         .then((authState: any) => {
-          console.log(authState);
           this.router.navigate(['dashboard'])
         }).catch((e) => {
           console.log(e);

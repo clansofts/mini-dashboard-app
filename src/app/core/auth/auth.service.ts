@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 import { User } from '../shared/user';
 
-
 @Injectable()
 export class AuthService {
 
