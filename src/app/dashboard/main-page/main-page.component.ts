@@ -19,6 +19,7 @@ export class MainPageComponent implements OnInit {
 
   public isPostClick: boolean = false;
   public isGoingToUpdate: boolean = false;
+
   public newPostRef: AngularFireList<any>;
   public newPost: Observable<any[]>;
   public documentForm: FormGroup;
@@ -32,7 +33,7 @@ export class MainPageComponent implements OnInit {
       'imgUrl': new FormControl(null),
       'description': new FormControl(null),
       'tags': new FormControl(null)
-    })
+    });
 
     this.newPostRef = this.db.list('post');
 

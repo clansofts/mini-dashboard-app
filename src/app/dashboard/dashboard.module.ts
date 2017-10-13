@@ -11,6 +11,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { DashboardGuard } from './dashboard-guard.service';
 import { DashboardResolver } from './dashboard-resolver.service';
 import { AlbumComponent } from './album/album.component';
+import { PostComponent } from './main-page/post/post.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AlbumComponent } from './album/album.component';
     ProfileComponent,
     MainPageComponent,
     UserProfileComponent,
-    AlbumComponent
+    AlbumComponent,
+    PostComponent
   ],
   providers: [
     DashboardGuard,
