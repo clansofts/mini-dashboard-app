@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable'
+
+import { AuthService } from '../../core/auth/auth.service';
 
 import { User } from '../../core/shared/user';
 
@@ -18,10 +19,10 @@ export class UserProfileComponent implements OnInit {
   public newPostRef: AngularFireList<any>;
   public newPost: Observable<any[]>;
 
-  constructor(private route: ActivatedRoute,private db: AngularFireDatabase, private afAuth: AngularFireAuth) { }
+  constructor(private route: ActivatedRoute,private db: AngularFireDatabase, private authService: AuthService) { }
 
   ngOnInit() {
-    const uid = this.afAuth.auth.currentUser['uid'];
+    const uid = this.authService.currentUserId;
 
     this.route.data.subscribe( (response: Data) => {
       this.user = response.data;

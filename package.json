@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --build-optimizer -aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,7 +24,7 @@
     "angularfire2": "^5.0.0-rc.2",
     "bootstrap": "^4.0.0-beta",
     "core-js": "^2.4.1",
-    "firebase": "^4.5.0",
+    "firebase": "^4.5.1",
     "jquery": "^3.2.1",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"

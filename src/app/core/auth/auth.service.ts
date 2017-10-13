@@ -9,11 +9,16 @@ import { User } from '../shared/user';
 export class AuthService {
 
   private user: User;
+  private authState: any;
 
-  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) { }
+  constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth;
+    });
+  }
 
   get isAuthenticated(): boolean {
-    return this.afAuth.auth.currentUser !== null;
+    return this.authState !== null;
   }
 
   get currentUser() {
@@ -22,8 +27,7 @@ export class AuthService {
   }
 
   get currentUserId(): string {
-    const authState = this.afAuth.auth.currentUser;
-    return this.isAuthenticated ? authState['uid'] : '';
+    return this.isAuthenticated ? this.authState['uid'] : '';
   }
 
   set setUser(user: User) {

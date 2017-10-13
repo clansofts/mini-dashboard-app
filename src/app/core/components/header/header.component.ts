@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private afAuth: AngularFireAuth, private authService: AuthService) { }
 
   get isAuthenticated(): boolean {
-    return this.afAuth.auth.currentUser !== null;
+    return this.authService.isAuthenticated;
   }
 
   ngOnInit() {
