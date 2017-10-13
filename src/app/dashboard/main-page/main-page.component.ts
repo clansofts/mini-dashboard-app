@@ -22,6 +22,7 @@ export class MainPageComponent implements OnInit {
 
   public newPostRef: AngularFireList<any>;
   public newPost: Observable<any[]>;
+
   public documentForm: FormGroup;
   public tags: string[] = [];
 
@@ -37,9 +38,11 @@ export class MainPageComponent implements OnInit {
 
     this.newPostRef = this.db.list('post');
 
-    this.newPost = this.db.list('post').snapshotChanges().map(changes => {
-      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    });
+    this.newPost = this.db.list('post')
+      .snapshotChanges()
+      .map(changes => {
+        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+      });
   }
 
   onAddTag() {
@@ -72,7 +75,6 @@ export class MainPageComponent implements OnInit {
 
   onCreatePost() {
     this.isPostClick = false;
-    console.log(this.post);
     this.newPostRef.push(this.post);
   }
 
@@ -97,6 +99,7 @@ export class MainPageComponent implements OnInit {
     }
     this.newPostRef.update(this.key, updatedPost);
     this.isGoingToUpdate = false;
+    this.isPostClick = false;
     this.empty();
   }
 

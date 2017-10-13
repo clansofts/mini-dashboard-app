@@ -7,11 +7,13 @@ import { DashboardComponent } from './dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AlbumComponent } from './album/album.component';
+import { PostComponent } from './main-page/post/post.component';
 
 import { DashboardGuard } from './dashboard-guard.service';
 import { DashboardResolver } from './dashboard-resolver.service';
-import { AlbumComponent } from './album/album.component';
-import { PostComponent } from './main-page/post/post.component';
+
+import { AlbumService } from './album/album.service';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { PostComponent } from './main-page/post/post.component';
   ],
   providers: [
     DashboardGuard,
-    DashboardResolver
+    DashboardResolver,
+    AlbumService
   ]
 })
 export class DashboardModule { }
