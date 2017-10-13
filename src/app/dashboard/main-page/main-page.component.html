@@ -1,4 +1,5 @@
 <h3>All posts</h3>
+<h5>** all posts from all users</h5>
 
 <hr>
 
@@ -59,7 +60,7 @@
 <div *ngFor="let post of newPost | async">
   <div class="card">
     <div class="card-body">
-      
+
       <app-post [post]="post"></app-post>
 
       <button type="button" class="btn btn-success" (click)="onUpdate(post.key, post)">Update</button>
