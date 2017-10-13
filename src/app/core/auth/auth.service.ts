@@ -58,7 +58,8 @@ export class AuthService {
 
 
   private newUser(user: User): void {
-    const uid = this.currentUserId;
+    // const uid = this.currentUserId;
+    const uid = this.afAuth.auth.currentUser['uid'];
 
     this.db.object(`users/${uid}`)
       .update(user)
