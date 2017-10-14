@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       'password': new FormControl(null, [ Validators.required, Validators.minLength(6) ]),
       'fullName': new FormControl(null, [ Validators.required ]),
       'gender': new FormControl(null, [ Validators.required]),
-      'tags': new FormControl(null, [ Validators.required]),
+      'tags': new FormControl(null),
     });
 
     this.email = this.registerForm.controls.email;
@@ -65,9 +65,11 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm.value['tags'] = this.tags;
 
+    console.log('sumbitted');
     if (this.registerForm.valid) {
-      this.authService.setUser = this.registerForm.value;
-      this.authService.signUpUser(email, password);
+      console.log('valid');
+      // this.authService.setUser = this.registerForm.value;
+      // this.authService.signUpUser(email, password);
     }
   }
 
