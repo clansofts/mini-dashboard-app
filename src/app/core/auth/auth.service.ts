@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 
 import { User } from '../shared/user';
 
+
 @Injectable()
 export class AuthService {
 
@@ -35,7 +36,7 @@ export class AuthService {
     this.user = user;
   }
 
-  signUpUser(email: string, password: string): void {
+  signUpWithEmailAndPassword(email: string, password: string): void {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((authState: any) => {
         this.newUser(this.user);
@@ -45,23 +46,23 @@ export class AuthService {
       });
   }
 
+  signUpWithFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    this.socialSignup(provider);
+  }
+
+  signUpWithTwitter() {
+    const provider = new firebase.auth.TwitterAuthProvider();
+    this.socialSignup(provider);
+  }
+
+  signUpWithGithub() {
+    const provider = new firebase.auth.GithubAuthProvider();
+    this.socialSignup(provider);
+  }
+
   signInUser(email: string, password: string): Promise<any> {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
-  }
-
-  signInUserFacebook() {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    this.afAuth.auth.signInWithPopup(provider);
-  }
-
-  signInUserTwitter() {
-    const provider = new firebase.auth.TwitterAuthProvider();
-    this.afAuth.auth.signInWithPopup(provider);
-  }
-
-  signInUserGithub() {
-    const provider = new firebase.auth.GithubAuthProvider();
-    this.afAuth.auth.signInWithPopup(provider);
   }
 
   signOutUser(): void {
@@ -72,6 +73,15 @@ export class AuthService {
     });
   }
 
+  private socialSignup(provider: any) {
+    this.afAuth.auth.signInWithPopup(provider)
+      .then((authState: any) => {
+        this.newUser(this.user);
+        this.router.navigate(['dashboard'])
+      }).catch((e) => {
+        console.log(e);
+      });
+  }
 
   private newUser(user: User): void {
     // const uid = this.currentUserId;

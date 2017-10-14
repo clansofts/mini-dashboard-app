@@ -50,12 +50,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSocialSignup(option: string) {
-    if (option === 'facebook' && this.registerForm.valid) {
-      this.authService.signInUserFacebook();
-    } else if (option === 'twitter' && this.registerForm.valid) {
-      this.authService.signInUserTwitter();
-    } else if (option === 'github' && this.registerForm.valid) {
-      this.authService.signInUserGithub();
+    if (!this.registerForm.valid) return;
+
+    this.registerForm.value['tags'] = this.tags;
+    this.authService.setUser = this.registerForm.value;
+
+    if (option === 'facebook') {
+      this.authService.signUpWithFacebook();
+    } else if (option === 'twitter') {
+      this.authService.signUpWithTwitter();
+    } else if (option === 'github') {
+      this.authService.signUpWithGithub();
     }
   }
 
@@ -63,13 +68,10 @@ export class RegisterComponent implements OnInit {
     const email = this.email.value;
     const password = this.password.value;
 
-    this.registerForm.value['tags'] = this.tags;
-
-    console.log('sumbitted');
     if (this.registerForm.valid) {
-      console.log('valid');
-      // this.authService.setUser = this.registerForm.value;
-      // this.authService.signUpUser(email, password);
+      this.registerForm.value['tags'] = this.tags;
+      this.authService.setUser = this.registerForm.value;
+      this.authService.signUpWithEmailAndPassword(email, password);
     }
   }
 
