@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 import { User } from '../shared/user';
 
@@ -46,6 +47,21 @@ export class AuthService {
 
   signInUser(email: string, password: string): Promise<any> {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  signInUserFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    this.afAuth.auth.signInWithPopup(provider);
+  }
+
+  signInUserTwitter() {
+    const provider = new firebase.auth.TwitterAuthProvider();
+    this.afAuth.auth.signInWithPopup(provider);
+  }
+
+  signInUserGithub() {
+    const provider = new firebase.auth.GithubAuthProvider();
+    this.afAuth.auth.signInWithPopup(provider);
   }
 
   signOutUser(): void {

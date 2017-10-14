@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, Validators } from '@angular/forms';
+
 import { AuthService } from '../../auth/auth.service';
 
 
@@ -34,7 +35,28 @@ export class RegisterComponent implements OnInit {
   onAddTag() {
     const tag = this.registerForm.get('tags').value;
     this.tags.push(tag);
-    console.log(this.tags);
+
+    this.registerForm.patchValue({
+      'tags': ''
+    });
+  }
+
+  onRemoveTag(index: number) {
+    this.tags.splice(index, 1);
+
+    this.registerForm.patchValue({
+      'tags': ''
+    });
+  }
+
+  onSocialSignup(option: string) {
+    if (option === 'facebook') {
+      this.authService.signInUserFacebook();
+    } else if (option === 'twitter') {
+      this.authService.signInUserTwitter();
+    } else if (option === 'github') {
+      this.authService.signInUserGithub();
+    }
   }
 
   onSubmit() {

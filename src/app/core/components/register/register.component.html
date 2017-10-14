@@ -35,8 +35,8 @@
               <div class="card">
                 <div class="card-body">
                   <h4>
-                    <span class="badge badge-primary" *ngFor="let tag of tags">
-                      <div>{{ tag }}</div>
+                    <span class="badge badge-primary" *ngFor="let tag of tags; let i = index">
+                      <div (click)="onRemoveTag(i)">{{ tag }}</div>
                     </span>
                   </h4>
                 </div>
@@ -45,7 +45,11 @@
           </div>
 
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn">Register with email and password</button>
+        <br>
+        <button type="button" class="btn" (click)="onSocialSignup('facebook')">Facebook <i class="fa fa-facebook" aria-hidden="true"></i></button>
+        <button type="button" class="btn" (click)="onSocialSignup('twitter')">Twitter <i class="fa fa-twitter" aria-hidden="true"></i></button>
+        <button type="button" class="btn" (click)="onSocialSignup('github')">Github <i class="fa fa-github" aria-hidden="true"></i></button>
       </form>
 
     </div>
