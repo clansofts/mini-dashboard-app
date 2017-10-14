@@ -50,11 +50,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onSocialSignup(option: string) {
-    if (option === 'facebook') {
+    if (option === 'facebook' && this.registerForm.valid) {
       this.authService.signInUserFacebook();
-    } else if (option === 'twitter') {
+    } else if (option === 'twitter' && this.registerForm.valid) {
       this.authService.signInUserTwitter();
-    } else if (option === 'github') {
+    } else if (option === 'github' && this.registerForm.valid) {
       this.authService.signInUserGithub();
     }
   }
