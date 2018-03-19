@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-firebase App', () => {
+describe('workshop-app App', () => {
   let page: AppPage;
 
   beforeEach(() => {

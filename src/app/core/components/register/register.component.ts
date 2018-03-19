@@ -55,7 +55,9 @@ export class RegisterComponent implements OnInit {
     this.registerForm.value['tags'] = this.tags;
     this.authService.setUser = this.registerForm.value;
 
-    if (option === 'facebook') {
+    if (option === 'google') {
+      this.authService.signUpWithGoogle();
+    } if (option === 'facebook') {
       this.authService.signUpWithFacebook();
     } else if (option === 'twitter') {
       this.authService.signUpWithTwitter();

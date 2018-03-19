@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AppGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AppGuard] },
   { path: 'login', component: LoginComponent, canActivate: [AppGuard] },
-  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' }
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+  { path: 'playground', loadChildren: './playground/playground.module#PlaygroundModule' }
 ];
 
 

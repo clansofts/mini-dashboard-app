@@ -46,6 +46,11 @@ export class AuthService {
       });
   }
 
+  signUpWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    this.socialSignup(provider);
+  }
+
   signUpWithFacebook() {
     const provider = new firebase.auth.FacebookAuthProvider();
     this.socialSignup(provider);

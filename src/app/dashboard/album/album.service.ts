@@ -52,6 +52,9 @@ export class AlbumService {
     })
   }
 
+
+  // HELPERS
+
   private saveFileData(upload: Upload) {
     this.db.list(`${this.basePath}/`).push(upload);
   }
@@ -64,7 +67,5 @@ export class AlbumService {
     const storageRef = firebase.storage().ref();
     storageRef.child(`${this.basePath}/${name}`).delete()
   }
-
-
 
 }
