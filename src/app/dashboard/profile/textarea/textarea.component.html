@@ -1,0 +1,15 @@
+<br>
+
+<!-- <mat-form-field appearance="fill">
+  <mat-label>Autosized textarea</mat-label>
+  <textarea matInput cdkTextareaAutosize cdkAutosizeMaxRows="30"></textarea>
+</mat-form-field> -->
+
+<mat-form-field appearance="outline" color="accent">
+  <textarea #message matInput placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="10"></textarea>
+  <mat-hint align="end">{{message.value.length}} / 600</mat-hint>
+</mat-form-field>
+<br>
+<div class="d-flex">
+  <button mat-raised-button color="accent" class="ml-auto mt-2">POST</button>
+</div>

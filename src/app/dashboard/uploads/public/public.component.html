@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col d-flex">
+
+    <mat-progress-spinner mode="indeterminate" [color]="'warn'" class="mx-auto mt-5" *ngIf="!isShow"></mat-progress-spinner>
+
+    <div class="mx-auto">
+      <div *ngFor="let item of photos | async">
+        <mat-card class="pb-0">
+          <mat-card-header>
+            <mat-card-title>{{ item.fileName }} - {{ item.file.newSize }}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="{{ item.downloadURL }}" alt="{{ item.fileName }}" width="100" class="mb-0">
+        </mat-card>
+        <br>
+      </div>
+    </div>
+
+  </div>
+</div>

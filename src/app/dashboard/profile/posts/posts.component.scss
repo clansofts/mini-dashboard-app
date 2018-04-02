@@ -1,0 +1,9 @@
+.mat-card {
+  max-width: 500px;
+  .mat-card-title {
+    display: flex;
+    span {
+      margin: 9.5px 0 9.5px 10px;
+    }
+  }
+}

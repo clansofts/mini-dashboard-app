@@ -1,10 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Data } from '@angular/router';
-
-import { AuthService } from '../../core/auth/auth.service';
-
-import { User } from '../../core/shared/user';
-
 
 @Component({
   selector: 'app-profile',
@@ -13,14 +7,9 @@ import { User } from '../../core/shared/user';
 })
 export class ProfileComponent implements OnInit {
 
-  public user: User;
-
-  constructor(private authService: AuthService, private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    this.route.data.subscribe( (response: Data) => {
-      this.user = response.data;
-    })
   }
 
 }

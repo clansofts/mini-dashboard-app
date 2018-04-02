@@ -1,0 +1,28 @@
+.mat-form-field {
+  width: 500px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.d-flex {
+  width: 500px;
+}
+
+@media (max-width: 991.98px) {
+  .mat-form-field, .d-flex {
+    width: 390px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .mat-form-field, .d-flex {
+    width: 500px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .mat-form-field, .d-flex {
+    width: 100%;
+  }
+}

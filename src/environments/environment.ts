@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyCT2Fv5xBUheQqqw0dHEWu8bQPSRlceRtk",
-    authDomain: "workshop-app-9db3a.firebaseapp.com",
-    databaseURL: "https://workshop-app-9db3a.firebaseio.com",
-    projectId: "workshop-app-9db3a",
-    storageBucket: "workshop-app-9db3a.appspot.com",
-    messagingSenderId: "255210870332"
+    apiKey: "AIzaSyBXoOWTaWdtCTu9P9ME80jPGForplaqGTc",
+    authDomain: "mini-dashboard-app.firebaseapp.com",
+    databaseURL: "https://mini-dashboard-app.firebaseio.com",
+    projectId: "mini-dashboard-app",
+    storageBucket: "mini-dashboard-app.appspot.com",
+    messagingSenderId: "558989801640"
   }
 };

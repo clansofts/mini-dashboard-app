@@ -1,0 +1,26 @@
+<br>
+
+<div *ngFor="let post of posts | async">
+
+  <br>
+
+  <mat-card>
+    <mat-card-header>
+      <img mat-card-avatar>
+      <mat-card-title><span>USER NAME</span></mat-card-title>
+      <!-- <mat-card-title><span>{{ user[0]?.firstname | async }} {{ user[0]?.lastname | async }}</span></mat-card-title> -->
+    </mat-card-header>
+    <img mat-card-image src="{{ post?.file?.downloadURL }}">
+    <mat-card-content>
+      <p>{{ post.message }}</p>
+    </mat-card-content>
+    <!-- <mat-divider [inset]="true"></mat-divider>
+    <mat-card-actions align="end">
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+  </mat-card>
+
+</div>
+
+<br>

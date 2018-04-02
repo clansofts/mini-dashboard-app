@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="card-wrapper">
+        <mat-card>
+          <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="card-content">
+            <mat-card-title class="m-0">Sign in</mat-card-title>
+            <mat-card-content>
+
+              <p>with your account</p>
+              <br>
+
+              <mat-form-field color="accent">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+              <mat-form-field color="accent">
+                <mat-label>Enter your password</mat-label>
+                <input matInput type="password" formControlName="password">
+              </mat-form-field>
+
+            </mat-card-content>
+            <mat-card-actions>
+              <small class="m-0" (click)="onCreateAccount()"
+                [matTooltip]="'Create an account with email and password'"
+                [matTooltipPosition]="'above'"
+              >Create account</small>
+              <button mat-raised-button type="submit">LOGIN</button>
+            </mat-card-actions>
+            <mat-card-actions>
+              <button mat-icon-button (click)="onSocialSignIn('facebook')" type="button"
+                [matTooltip]="'Sign in with your Faceabook account'"
+                [matTooltipPosition]="'below'"
+                class="facebook"><mat-icon fontSet="fontawesome" class="fab fa-facebook-f"></mat-icon></button>
+              <button mat-icon-button (click)="onSocialSignIn('twitter')" type="button"
+                [matTooltip]="'Sign in with your Twitter account'"
+                [matTooltipPosition]="'below'"
+                class="twitter"><mat-icon fontSet="fontawesome" class="fab fa-twitter"></mat-icon></button>
+              <button mat-icon-button (click)="onSocialSignIn('google')" type="button"
+                [matTooltip]="'Sign in with your Google account'"
+                [matTooltipPosition]="'below'"
+                class="google"><mat-icon fontSet="fontawesome" class="fab fa-google"></mat-icon></button>
+              <button mat-icon-button (click)="onSocialSignIn('github')" type="button"
+                [matTooltip]="'Sign in with your Github account'"
+                [matTooltipPosition]="'below'"
+                class="github"><mat-icon fontSet="fontawesome" class="fab fa-github"></mat-icon></button>
+              <button mat-icon-button (click)="onSocialSignIn('anonymous')" type="button"
+                [matTooltip]="'Sign in anonymously'"
+                [matTooltipPosition]="'below'"
+                class="anonymous"><mat-icon>perm_identity</mat-icon></button>
+              <button mat-icon-button (click)="logout()" type="button"><mat-icon>perm_identity</mat-icon></button>
+            </mat-card-actions>
+          </form>
+          <mat-card-footer *ngIf="true">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.container {
+  #main-column {
+    height: calc(100vh - 64px);
+    display: flex;
+    .card-wrapper {
+      margin: auto;
+      padding-bottom: 200px;
+      .mat-card {
+        padding: 0;
+        width: 500px;
+        .mat-card-footer {
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+        .card-content {
+          padding: 40px 40px 20px 40px;
+          .mat-form-field {
+            width: 100%;
+          }
+          .mat-card-actions {
+            margin: 10px 0 0 0;
+            display: flex;
+            .mat-button { margin-left: auto; }
+          }
+        }
+      }
+    }
+  }
+}

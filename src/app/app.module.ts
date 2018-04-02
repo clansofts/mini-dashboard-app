@@ -1,46 +1,41 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
-// import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { AppProviderModule } from './app-provider.module';
 import { AppRoutingModule } from './app-routing.module';
-import { ComponentsModule } from './core/components/components.module';
+import { Material2Module } from './common/core/modules/material2.module';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { OnSignoutComponent } from './common/shared/components/on-signout/on-signout.component';
 
-import { AppGuard } from './app-guard.service';
-
-import { environment } from '../environments/environment';
-export const firebaseConfig = environment.firebaseConfig;
+import { FirebaseAuthService } from './common/core/services/firebase-auth.service';
+import { FirebaseDbService } from './common/core/services/firebase-db.service';
+import { SharedService } from './common/core/services/shared.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    OnSignoutComponent
+  ],
+  entryComponents: [
+    OnSignoutComponent
   ],
   imports: [
-    BrowserModule,
-    // AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireModule.initializeApp({
-      apiKey: "AIzaSyCT2Fv5xBUheQqqw0dHEWu8bQPSRlceRtk",
-      authDomain: "workshop-app-9db3a.firebaseapp.com",
-      databaseURL: "https://workshop-app-9db3a.firebaseio.com",
-      projectId: "workshop-app-9db3a",
-      storageBucket: "workshop-app-9db3a.appspot.com",
-      messagingSenderId: "255210870332"
-    }),
-    // AngularFirestoreModule,
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    AppProviderModule,
     AppRoutingModule,
-    ComponentsModule
+    Material2Module,
+    SnotifyModule
   ],
   providers: [
-    AppGuard
+    FirebaseAuthService,
+    FirebaseDbService,
+    SharedService,
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    SnotifyService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

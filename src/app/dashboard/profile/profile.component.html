@@ -1,13 +1,20 @@
-<div class="card">
-  <div class="card-body">
-    <div data-photo>
-      <img src="https://ui-avatars.com/api/?name={{ user.fullName }}" alt="{{ user.fullName }}">
-    </div>
-    <h4 class="card-title">{{ user.email }}</h4>
-    <h6 class="card-subtitle text-mute mb-2">{{ user.gender }}</h6>
-    <h6 class="card-subtitle text-mute mb-2">Tags</h6>
-    <div *ngFor="let tag of user.tags">
-      <p class="card-text"> * {{ tag }}</p>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5 col-lg-4 col-xl-4 w-md-100" left-pane>
+
+        <app-user></app-user>
+
+      </div>
+      <div class="col-12 col-md-7 col-lg-8 col-xl-8" right-pane>
+
+        <app-textarea></app-textarea>
+
+        <div *ngFor="let item of [0, 0, 0, 0, 0, 0, 0, 0, 0]">
+          <app-posts></app-posts>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

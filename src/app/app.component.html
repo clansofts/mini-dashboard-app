@@ -1,5 +1,73 @@
-<app-header></app-header>
+<mat-drawer-container>
+  <mat-drawer #start mode="over">
 
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
+    <div class="signout-container d-flex">
+      <button mat-icon-button (click)="onSignOut()" class="m-2">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+      <p class="my-auto">Logout</p>
+    </div>
+
+  </mat-drawer>
+
+  <div>
+
+    <mat-toolbar class="desktop">
+      <div class="container d-flex">
+        <button mat-icon-button (click)="start.toggle()" *ngIf="firebaseAuthService.isAuthenticated | async">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="ml-3 mr-auto" (click)="main()" *ngIf="firebaseAuthService.isAuthenticated | async; else span">Dashboard Test</span>
+        <ng-template #span>
+          <span class="mr-auto" (click)="main()" [ngStyle]="{ 'transform': 'translateY(0px)' }">Dashboard Test</span>
+        </ng-template>
+        <button mat-icon-button (click)="onDashboard()" *ngIf="firebaseAuthService.isAuthenticated | async" class="ml-3">
+          <mat-icon>dashboard</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onProfile()" *ngIf="firebaseAuthService.isAuthenticated | async" class="ml-3">
+          <mat-icon>face</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onUploads()" *ngIf="firebaseAuthService.isAuthenticated | async" class="ml-3">
+          <mat-icon>folder</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+
+    <mat-toolbar class="mobile">
+      <div class="container d-flex">
+        <button mat-icon-button (click)="start.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="ml-3 mr-auto" (click)="main()">Dashboard Test</span>
+        <button mat-icon-button [mat-menu-trigger-for]="posXMenuOverlay">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+
+    <div drawer-content>
+
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </div>
+</mat-drawer-container>
+
+
+<mat-menu xPosition="before" [overlapTrigger]="false" #posXMenuOverlay="matMenu" class="before">
+  <button mat-menu-item (click)="onDashboard()">
+    <mat-icon>dashboard</mat-icon>
+    Dashboard
+  </button>
+  <button mat-menu-item (click)="onProfile()">
+    <mat-icon>face</mat-icon>
+    Profile
+  </button>
+  <button mat-menu-item (click)="onUploads()">
+    <mat-icon>folder</mat-icon>
+    Album
+  </button>
+</mat-menu>
+
+<ng-snotify></ng-snotify>

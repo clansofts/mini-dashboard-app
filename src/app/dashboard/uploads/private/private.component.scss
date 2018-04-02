@@ -1,0 +1,45 @@
+[data-left] {
+  // border: 3px solid red;
+  .upload-container {
+    .mat-card {
+      width: 420px;
+      img {
+        width: 100px;
+      }
+    }
+  }
+}
+
+[data-right] {
+  // border: 3px solid blue;
+  flex-flow: column wrap;
+  .mat-card {
+    width: 540px;
+    .mat-icon-button {
+      transform: translateY(-12px);
+    }
+  }
+
+  .line-break {
+    width: 100%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  [data-right] {
+    .mat-card {
+      width: 100%;
+    }
+  }
+}
+
+
+@media (max-width: 469.99px) {
+  [data-left] {
+    .upload-container {
+      .mat-card {
+        width: 100%;
+      }
+    }
+  }
+}

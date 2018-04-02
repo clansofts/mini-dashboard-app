@@ -1,0 +1,9 @@
+.d-flex {
+  flex-flow: column wrap;
+  .mat-card {
+    width: 540px;
+    .mat-icon-button {
+      transform: translateY(-12px);
+    }
+  }
+}

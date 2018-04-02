@@ -1,0 +1,18 @@
+<br>
+
+<mat-form-field appearance="outline" color="accent">
+  <textarea #message matInput placeholder="Autosize textarea" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="10" [(ngModel)]="textarea"></textarea>
+  <mat-hint align="end">{{message.value.length}} / 600</mat-hint>
+</mat-form-field>
+<br>
+<div class="d-flex">
+  <input type="file" #file class="d-none" (change)="onChange($event)" [(ngModel)]="fl">
+  <button mat-icon-button color="accent" (click)="file.click()" class="mt-2"
+    [matTooltip]="'Attach photo'"
+    [matTooltipPosition]="'below'"
+    >
+    <mat-icon>photo</mat-icon>
+  </button>
+  <span class="ml-2 mr-auto mt-3 ">{{ upload?.name }}</span>
+  <button mat-raised-button color="accent" class="ml-auto mt-2" (click)="onPost()" [disabled]="isDisabled">POST</button>
+</div>

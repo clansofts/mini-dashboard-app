@@ -1,0 +1,31 @@
+.mat-drawer-container {
+  .mat-drawer {
+    width: 300px;
+  }
+
+  .mat-toolbar {
+    height: 64px;
+    span {
+      transform: translateY(3px);
+      cursor: pointer;
+    }
+  }
+
+
+  [drawer-content] {
+    height: calc(100vh - 64px);
+  }
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 575.98px) {
+  .mobile {
+    display: flex;
+  }
+  .desktop {
+    display: none;
+  }
+}
