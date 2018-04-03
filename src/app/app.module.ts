@@ -11,6 +11,8 @@ import { OnSignoutComponent } from './common/shared/components/on-signout/on-sig
 import { FirebaseAuthService } from './common/core/services/firebase-auth.service';
 import { FirebaseDbService } from './common/core/services/firebase-db.service';
 import { SharedService } from './common/core/services/shared.service';
+import { DashboardGuard } from './dashboard/dashboard.guard';
+import { HomePageGuard } from './home-page/home-page.guard';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { SharedService } from './common/core/services/shared.service';
     FirebaseAuthService,
     FirebaseDbService,
     SharedService,
+    DashboardGuard,
+    HomePageGuard,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService
   ],

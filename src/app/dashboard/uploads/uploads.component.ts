@@ -9,18 +9,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class UploadsComponent implements OnInit {
 
-  isShow: boolean = false;
+  isShow: boolean = true;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const url = this.router.url;
+    this.isShow = url.includes('u0') ? false : true;
   }
 
   onNavigate(option: boolean) {
     this.isShow = option;
 
     option
-      ? this.router.navigate(['u1'], { relativeTo: this.route, skipLocationChange: true })
+      ? this.router.navigate(['u1'], { relativeTo: this.route })
       : this.router.navigate(['u0'], { relativeTo: this.route });
   }
 

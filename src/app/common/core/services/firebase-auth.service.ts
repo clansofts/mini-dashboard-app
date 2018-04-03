@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import * as fb from 'firebase';
@@ -9,9 +10,10 @@ const LINK = 'https://www.isc.upenn.edu/how-to/configuring-your-web-browser-allo
 @Injectable()
 export class FirebaseAuthService {
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
     afAuth.authState.subscribe((authState) => {
       console.log(authState);
+      authState !== null ? 0 : this.router.navigate(['/']);
     });
   }
 
@@ -21,7 +23,7 @@ export class FirebaseAuthService {
   }
 
   get uid(): string {
-    let currentUser: any = this.afAuth.auth.currentUser;
+    let currentUser = this.afAuth.auth.currentUser;
     return currentUser !== null ? this.afAuth.auth.currentUser.uid : 'uninitialized';
   }
 

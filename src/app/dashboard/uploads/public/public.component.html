@@ -7,9 +7,9 @@
       <div *ngFor="let item of photos | async">
         <mat-card class="pb-0">
           <mat-card-header>
-            <mat-card-title>{{ item.fileName }} - {{ item.file.newSize }}</mat-card-title>
+            <mat-card-title>{{ item?.fileName }} - {{ item?.file?.newSize }}</mat-card-title>
           </mat-card-header>
-          <img mat-card-image src="{{ item.downloadURL }}" alt="{{ item.fileName }}" width="100" class="mb-0">
+          <img mat-card-image src="{{ item?.downloadURL }}" alt="{{ item?.fileName }}" width="100" class="mb-0">
         </mat-card>
         <br>
       </div>

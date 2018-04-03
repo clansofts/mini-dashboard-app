@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProfileComponent } from './profile.component';
 
+import { UserResolver } from './user/user.resolver';
+
 const routes: Routes = [
-  { path: '', component: ProfileComponent }
+  { path: '', component: ProfileComponent, resolve: [ UserResolver ] }
 ];
 
 

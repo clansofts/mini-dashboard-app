@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-  import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
 
@@ -140,6 +140,8 @@ export class PrivateComponent implements OnInit {
           upload.bytesTransferred = uploadTask.snapshot.bytesTransferred;
           upload.downloadURL = uploadTask.snapshot.downloadURL;
           upload.totalBytes = uploadTask.snapshot.totalBytes;
+
+          upload.file['url'] = '';
 
           this.db.list(`app-uploads`).push(upload)
             .then(() => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase';
 
 import { FirebaseDbService } from '../../../common/core/services/firebase-db.service';
 
@@ -12,24 +13,12 @@ import { FirebaseDbService } from '../../../common/core/services/firebase-db.ser
 export class PostsComponent implements OnInit {
 
   posts: Observable<any[]>
-  user: Observable<any>
+  user: string = '';
 
   constructor(private firebaseDbService: FirebaseDbService) { }
 
   ngOnInit() {
     this.posts = this.firebaseDbService.readPublicPosts();
-
-    this.posts.subscribe((response) => {
-      console.log(response);
-    });
-  }
-
-  userInfo(uid: string) {
-    // this.user.subscribe((response) => {
-    //   console.log(response);
-    // });
-
-    return this.firebaseDbService.getUserInfo(uid);
   }
 
 }

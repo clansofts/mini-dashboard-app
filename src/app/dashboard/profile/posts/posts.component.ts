@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase';
+
+import { FirebaseDbService } from '../../../common/core/services/firebase-db.service';
+
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  posts: Observable<any[]>
+  user: string = '';
+
+  constructor(private firebaseDbService: FirebaseDbService) { }
 
   ngOnInit() {
+    this.posts = this.firebaseDbService.readPrivatePosts();
+  }
+
+  onRemovePost(post: any) {
+    this.firebaseDbService.removePost(post);
   }
 
 }

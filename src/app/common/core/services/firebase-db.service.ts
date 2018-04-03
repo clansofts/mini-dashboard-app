@@ -30,11 +30,7 @@ export class FirebaseDbService {
 
         this.users.push(newUser);
 
-      }).catch((e) => {
-
-        console.log('ERROR: ', e);
-
-      })
+      }).catch((e) => 0)
   }
 
   get userInfo() {
@@ -42,7 +38,7 @@ export class FirebaseDbService {
       return changes.map((el) => {
         const uid = this.firebaseAuthService.uid;
         return el.payload.val().uid === uid ? { key: el.payload.key, ...el.payload.val() } : null;
-      }).reverse().filter(el => el !== undefined)[0];
+      }).reverse().filter(el => el !== null)[0];
     });
   }
 
@@ -56,22 +52,44 @@ export class FirebaseDbService {
 
   readPublicPosts() {
     return this.posts.snapshotChanges().map((changes) => {
-      return changes.map((el) => ({ key: el.payload.key, ...el.payload.val() })).reverse();
+      return changes
+        .map((el) => ({ key: el.payload.key, ...el.payload.val() }))
+        .reverse()
+        .map((post) => {
+          this.users.snapshotChanges().map((changes) => {
+            return changes.map((user) => {
+              return user.payload.val().uid === post.uid ? { key: user.payload.key, ...user.payload.val() } : null;
+            }).reverse().filter(e => e !== null)[0];
+          }).subscribe((response) => {
+            post['user'] = response;
+          });
+          return post;
+        });
     });
   }
 
   readPrivatePosts() {
     return this.posts.snapshotChanges().map((changes) => {
-      return changes.map((el) => {
-        const uid = this.firebaseAuthService.uid;
-        return el.payload.val().uid === uid ? { key: el.payload.key, ...el.payload.val() } : null;
-      }).reverse().filter(el => el !== undefined);
-    })
+      return changes
+        .map((el) => ({ key: el.payload.key, ...el.payload.val() }))
+        .reverse()
+        .map((post) => {
+          this.users.snapshotChanges().map((changes) => {
+            return changes.map((user) => {
+              return user.payload.val().uid === post.uid ? { key: user.payload.key, ...user.payload.val() } : null;
+            }).reverse().filter(e => e !== null)[0];
+          }).subscribe((response) => {
+            post['user'] = response;
+          });
+          return post;
+        })
+        .filter((post) => post.uid === this.firebaseAuthService.uid ? post : 0);
+    });
   }
 
   readPublicAlbum() {
     return this.uploads.snapshotChanges().map((changes) => {
-      return changes.map((el) => ({ key: el.payload.key, ...el.payload.val() })).reverse();
+       return changes.map((el) => ({ key: el.payload.key, ...el.payload.val() })).reverse();
     });
   }
 
@@ -80,7 +98,7 @@ export class FirebaseDbService {
       return changes.map((el) => {
         const uid = this.firebaseAuthService.uid;
         return el.payload.val().uid === uid ? { key: el.payload.key, ...el.payload.val() } : null;
-      }).reverse().filter(el => el !== undefined);
+      }).reverse().filter(el => el !== null);
     })
   }
 
@@ -90,6 +108,9 @@ export class FirebaseDbService {
     })
   }
 
+  removePost(key: string) {
+    this.posts.remove(key);
+  }
 
   private removeFileDB(key: string) {
     return this.uploads.remove(key);

@@ -1,27 +1,125 @@
-# Dashboards
+# Example app with Angular 5 + Angular Material2 + Angularfire2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
 
-## Development server
+> ### Angular material2 component showcase. Angularfire2 basic manipulation, authentication (email and social) and storage. File, FileList and FileReader WebAPIs sample application. (Feat. [ng-snotify](https://artemsky.github.io/ng-snotify/))
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## DEMO
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Live DEMO [here](https://goo.gl/WQQFUj)
 
-## Build
+<img src="./src/assets/markdown/albumd.png" alt="album-a" style=""/>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+</br>  
 
-## Running unit tests
+## Login page and registration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Sign in using email and password or using social media.  
 
-## Running end-to-end tests
+</br>  
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+<img src="./src/assets/markdown/pagea.png" alt="album-a" style="width: 500px;"/>
+<img src="./src/assets/markdown/pageb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
 
-## Further help
+## Main-feed module
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### Post images, text and view other users posts.  
+
+</br>  
+
+<img src="./src/assets/markdown/feeda.png" alt="album-a" style="width: 500px;"/>
+<img src="./src/assets/markdown/feedb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+
+
+## Profile Module
+
+#### See your own posts in profile, post images and text and delete any post.
+
+</br>  
+
+<img src="./src/assets/markdown/profilea.png" alt="album-a" style="width: 500px;"/>
+<img src="./src/assets/markdown/profileb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+
+<img src="./src/assets/markdown/profilec.png" alt="album-a" style="width: 500px;"/>
+
+## Album module
+
+#### View other users uploaded photos in album, upload and delete photos in your own album, displays selected photos pending to upload and loading notification box.
+
+</br>  
+
+<img src="./src/assets/markdown/albuma.png" alt="album-a" style="width: 500px;"/>
+<img src="./src/assets/markdown/albumb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+
+<img src="./src/assets/markdown/albumc.png" alt="album-a" style="width: 500px;"/>
+<img src="./src/assets/markdown/albumd.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+
+<img src="./src/assets/markdown/albume.png" alt="album-a" style="width: 500px;"/>
+<img src="./src/assets/markdown/albumf.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+
+</br>  
+
+
+## Usage
+
+**Warning: install the latest [Node.js](https://nodejs.org/en/) engine node >= 8.0.0**
+
+*   `git clone https://github.com/ElecTreeFrying/mini-dashboard-app.git dashboards`
+*   `cd dashboards`
+*   `npm install`
+
+Create an account [firebase console](https://console.firebase.google.com).
+
+1.  Select _Add Project_
+1.  Select Authentications
+1.  Click copy **WEB SETUP**
+1.  Setup rtdb rules. Database -> Realtime Database -> RULES
+
+    ```
+    {
+      "rules": {
+        "app-users": {
+        	".read": "auth !== null",
+        	".write": "auth !== null"  
+        },
+        "app-posts": {
+        	".read": "auth !== null",
+        	".write": "auth !== null"  
+        },
+        "app-uploads": {
+        	".read": "auth !== null",
+        	".write": "auth !== null"  
+        }
+      }
+    }
+    ```
+
+1.  Create the environment files below in `src/environments/`.
+
+    **environment.prod.ts**
+
+    ```
+    export const environment = {
+      production: true,
+      firebaseConfig: { **WEB SETUP** }
+    };
+
+    ```
+
+    **environment.ts**
+
+    ```
+    export const environment = {
+      production: false,
+      firebaseConfig: { **WEB SETUP** }
+    };
+
+    ```
+
+## License
+
+MIT
+
+Enjoy Special thanks to chibi [2B](http://nier.wikia.com/wiki/YoRHa_No.2_Type_B) <img src="./src/assets/markdown/avatar2b.jpg" alt="album-a" style="width: 50px; border-radius:20px; margin-left:5px"/>
+
+We are always happy to hear your feedback!

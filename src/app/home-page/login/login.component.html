@@ -29,27 +29,27 @@
               <button mat-raised-button type="submit">LOGIN</button>
             </mat-card-actions>
             <mat-card-actions>
-              <button mat-icon-button (click)="onSocialSignIn('facebook')" type="button"
+              <button mat-icon-button (click)="onSocialSignIn('facebook')" type="button" (click)="onSignIn()"
                 [matTooltip]="'Sign in with your Faceabook account'"
-                [matTooltipPosition]="'below'"
+                [matTooltipPosition]="'left'"
                 class="facebook"><mat-icon fontSet="fontawesome" class="fab fa-facebook-f"></mat-icon></button>
-              <button mat-icon-button (click)="onSocialSignIn('twitter')" type="button"
+              <button mat-icon-button (click)="onSocialSignIn('twitter')" type="button" (click)="onSignIn()"
                 [matTooltip]="'Sign in with your Twitter account'"
                 [matTooltipPosition]="'below'"
                 class="twitter"><mat-icon fontSet="fontawesome" class="fab fa-twitter"></mat-icon></button>
-              <button mat-icon-button (click)="onSocialSignIn('google')" type="button"
+              <button mat-icon-button (click)="onSocialSignIn('google')" type="button" (click)="onSignIn()"
                 [matTooltip]="'Sign in with your Google account'"
                 [matTooltipPosition]="'below'"
                 class="google"><mat-icon fontSet="fontawesome" class="fab fa-google"></mat-icon></button>
-              <button mat-icon-button (click)="onSocialSignIn('github')" type="button"
+              <button mat-icon-button (click)="onSocialSignIn('github')" type="button" (click)="onSignIn()"
                 [matTooltip]="'Sign in with your Github account'"
                 [matTooltipPosition]="'below'"
                 class="github"><mat-icon fontSet="fontawesome" class="fab fa-github"></mat-icon></button>
-              <button mat-icon-button (click)="onSocialSignIn('anonymous')" type="button"
+              <button mat-icon-button (click)="onSocialSignIn('anonymous')" type="button" (click)="onSignIn()"
                 [matTooltip]="'Sign in anonymously'"
-                [matTooltipPosition]="'below'"
+                [matTooltipPosition]="'right'"
                 class="anonymous"><mat-icon>perm_identity</mat-icon></button>
-              <button mat-icon-button (click)="logout()" type="button"><mat-icon>perm_identity</mat-icon></button>
+              <!-- <button mat-icon-button (click)="logout()" type="button"><mat-icon>perm_identity</mat-icon></button> -->
             </mat-card-actions>
           </form>
           <mat-card-footer *ngIf="true">

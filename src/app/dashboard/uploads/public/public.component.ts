@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { FirebaseDbService } from '../../../common/core/services/firebase-db.service';
@@ -9,9 +9,10 @@ import { FirebaseDbService } from '../../../common/core/services/firebase-db.ser
   templateUrl: './public.component.html',
   styleUrls: ['./public.component.scss']
 })
-export class PublicComponent implements OnInit {
+export class PublicComponent implements OnInit, OnDestroy {
 
   photos: Observable<any[]>;
+  _photos: Observable<any[]>;
   isShow: boolean = false;
 
   constructor(private firebaseDbService: FirebaseDbService) { }
@@ -24,6 +25,10 @@ export class PublicComponent implements OnInit {
     this.photos.subscribe((response) => {
       this.isShow = true;
     });
+  }
+
+  ngOnDestroy() {
+    this.photos = this._photos;
   }
 
 }

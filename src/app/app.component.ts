@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { OnSignoutComponent } from './common/shared/components/on-signout/on-signout.component';
 
 import { FirebaseAuthService } from './common/core/services/firebase-auth.service';
+import { FirebaseDbService } from './common/core/services/firebase-db.service';
 
 
 @Component({
@@ -12,14 +13,25 @@ import { FirebaseAuthService } from './common/core/services/firebase-auth.servic
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
+  isAuthenticated: boolean = false
   onSignoutComponentRef: MatDialogRef<OnSignoutComponent>;
 
-  constructor(private router: Router, private route: ActivatedRoute, private dialog: MatDialog, private firebaseAuthService: FirebaseAuthService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private dialog: MatDialog, private firebaseAuthService: FirebaseAuthService, private firebaseDbService: FirebaseDbService) {}
+
+  ngAfterViewInit() {
+    this.isAuthenticated = false;
+
+    this.firebaseAuthService.isAuthenticated.subscribe((response) => {
+      this.isAuthenticated = response !== null;
+    });
+  }
 
   main() {
-    this.router.navigate(['/']);
+    this.isAuthenticated
+      ? this.router.navigate(['dashboard'])
+      : this.router.navigate(['/']);
   }
 
   onDashboard() {
@@ -34,12 +46,19 @@ export class AppComponent {
     this.router.navigate(['dashboard', 'uploads']);
   }
 
+  click() {
+    console.log('putang ina');
+  }
+
   onSignOut() {
     this.onSignoutComponentRef = this.dialog.open(OnSignoutComponent);
     this.onSignoutComponentRef.afterClosed().subscribe((response) => {
-      response ? this.firebaseAuthService.signOut().then(() => {
-        console.log('signed-out successfully');
-      }) : 0;
+      if (response) {
+        this.router.navigate(['/']);
+        setTimeout(() => {
+          this.firebaseAuthService.signOut();
+        }, 1000);
+      }
     });
   }
 

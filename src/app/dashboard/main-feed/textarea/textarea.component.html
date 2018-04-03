@@ -6,7 +6,7 @@
 </mat-form-field>
 <br>
 <div class="d-flex">
-  <input type="file" #file class="d-none" (change)="onChange($event)" [(ngModel)]="fl">
+  <input type="file" #file class="d-none" (change)="onChange($event)">
   <button mat-icon-button color="accent" (click)="file.click()" class="mt-2"
     [matTooltip]="'Attach photo'"
     [matTooltipPosition]="'below'"

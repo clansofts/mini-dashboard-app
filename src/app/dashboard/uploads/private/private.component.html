@@ -11,11 +11,11 @@
               <input type="file" #file multiple size="50" (change)="onChange($event)">
               <button mat-icon-button color="accent" (click)="file.value = ''" *ngIf="totalSize !== '' && file.value !== ''" [disabled]="isDisabled"
                 [matTooltip]="'Remove selected files'"
-                [matTooltipPosition]="'below'"
+                [matTooltipPosition]="'above'"
                 ><mat-icon>clear</mat-icon></button>
               <button mat-icon-button color="accent" (click)="onUpload(0)" [disabled]="isDisabled"
                 [matTooltip]="'Upload selected files'"
-                [matTooltipPosition]="'below'"
+                [matTooltipPosition]="'right'"
                 ><mat-icon>file_upload</mat-icon></button>
             </div>
           </mat-card-content>
@@ -47,10 +47,13 @@
       <div *ngFor="let item of photos | async">
         <mat-card class="pb-0">
           <mat-card-header>
-            <mat-card-title>{{ item.fileName }} - {{ item.file.newSize }}</mat-card-title>
-            <button mat-icon-button (click)="onRemovePhoto(item)" class="d-block ml-auto"><mat-icon>delete</mat-icon></button>
+            <mat-card-title>{{ item?.fileName }} - {{ item?.file?.newSize }}</mat-card-title>
+            <button mat-icon-button (click)="onRemovePhoto(item)" class="d-block ml-auto"
+              [matTooltip]="'Remove upload'"
+              [matTooltipPosition]="'right'"
+              ><mat-icon>delete</mat-icon></button>
           </mat-card-header>
-          <img mat-card-image src="{{ item.downloadURL }}" alt="{{ item.fileName }}" width="100" class="mb-0">
+          <img mat-card-image src="{{ item?.downloadURL }}" alt="{{ item?.fileName }}" width="100" class="mb-0">
         </mat-card>
         <br>
       </div>

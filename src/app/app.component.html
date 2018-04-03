@@ -1,7 +1,7 @@
 <mat-drawer-container>
   <mat-drawer #start mode="over">
 
-    <div class="signout-container d-flex">
+    <div class="signout-container d-flex" (click)="start.close()">
       <button mat-icon-button (click)="onSignOut()" class="m-2">
         <mat-icon>power_settings_new</mat-icon>
       </button>
@@ -14,20 +14,20 @@
 
     <mat-toolbar class="desktop">
       <div class="container d-flex">
-        <button mat-icon-button (click)="start.toggle()" *ngIf="firebaseAuthService.isAuthenticated | async">
+        <button mat-icon-button (click)="start.toggle()" *ngIf="isAuthenticated">
           <mat-icon>menu</mat-icon>
         </button>
-        <span class="ml-3 mr-auto" (click)="main()" *ngIf="firebaseAuthService.isAuthenticated | async; else span">Dashboard Test</span>
+        <span class="ml-3 mr-auto" (click)="main()" *ngIf="isAuthenticated; else span">Dashboard Test</span>
         <ng-template #span>
           <span class="mr-auto" (click)="main()" [ngStyle]="{ 'transform': 'translateY(0px)' }">Dashboard Test</span>
         </ng-template>
-        <button mat-icon-button (click)="onDashboard()" *ngIf="firebaseAuthService.isAuthenticated | async" class="ml-3">
+        <button mat-icon-button (click)="onDashboard()" *ngIf="isAuthenticated" class="ml-3">
           <mat-icon>dashboard</mat-icon>
         </button>
-        <button mat-icon-button (click)="onProfile()" *ngIf="firebaseAuthService.isAuthenticated | async" class="ml-3">
+        <button mat-icon-button (click)="onProfile()" *ngIf="isAuthenticated" class="ml-3">
           <mat-icon>face</mat-icon>
         </button>
-        <button mat-icon-button (click)="onUploads()" *ngIf="firebaseAuthService.isAuthenticated | async" class="ml-3">
+        <button mat-icon-button (click)="onUploads()" *ngIf="isAuthenticated" class="ml-3">
           <mat-icon>folder</mat-icon>
         </button>
       </div>
