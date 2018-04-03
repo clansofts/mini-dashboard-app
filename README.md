@@ -8,7 +8,7 @@
 
 ### Live DEMO [here](https://goo.gl/WQQFUj)
 
-<img src="./src/assets/markdown/albumd.png" alt="album-a" style=""/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FalbumD.PNG?alt=media&token=8a122fe3-bab5-42cd-ae0b-9bf41321e3e7" alt="album-a" style=""/>
 
 </br>  
 
@@ -18,8 +18,8 @@
 
 </br>  
 
-<img src="./src/assets/markdown/pagea.png" alt="album-a" style="width: 500px;"/>
-<img src="./src/assets/markdown/pageb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FpageA.PNG?alt=media&token=8a4245fa-bf6e-4078-9256-ff0418e97028" alt="album-a" style="width: 500px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FpageB.PNG?alt=media&token=5ec9bdb5-18ae-4744-a820-c4a6d038bf23" alt="album-a" style="width: 500px; margin-left:20px;"/>
 
 ## Main-feed module
 
@@ -27,8 +27,8 @@
 
 </br>  
 
-<img src="./src/assets/markdown/feeda.png" alt="album-a" style="width: 500px;"/>
-<img src="./src/assets/markdown/feedb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FfeedA.PNG?alt=media&token=b0906dc8-36a1-4165-915f-8499a5dab696" alt="album-a" style="width: 500px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FfeedB.PNG?alt=media&token=d7f67746-f671-480a-abc1-0f6edc454f6b" alt="album-a" style="width: 500px; margin-left:20px;"/>
 
 
 ## Profile Module
@@ -37,10 +37,10 @@
 
 </br>  
 
-<img src="./src/assets/markdown/profilea.png" alt="album-a" style="width: 500px;"/>
-<img src="./src/assets/markdown/profileb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FprofileA.PNG?alt=media&token=75daecbc-0310-4717-84bd-2e2378d91bf0" alt="album-a" style="width: 500px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FprofileB.PNG?alt=media&token=b5d9e3c3-0833-4859-a551-99d53eeee662" alt="album-a" style="width: 500px; margin-left:20px;"/>
 
-<img src="./src/assets/markdown/profilec.png" alt="album-a" style="width: 500px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FprofileC.PNG?alt=media&token=eaaa771a-3ea7-4647-802c-ddc545bf7fbb" alt="album-a" style="width: 500px;"/>
 
 ## Album module
 
@@ -48,14 +48,14 @@
 
 </br>  
 
-<img src="./src/assets/markdown/albuma.png" alt="album-a" style="width: 500px;"/>
-<img src="./src/assets/markdown/albumb.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FalbumA.PNG?alt=media&token=2fb4b024-90bf-453b-b8b4-2515fbd74097" alt="album-a" style="width: 500px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FalbumB.PNG?alt=media&token=2c7a0b49-33a1-44b3-96c5-ab40290dfc26" alt="album-a" style="width: 500px; margin-left:20px;"/>
 
-<img src="./src/assets/markdown/albumc.png" alt="album-a" style="width: 500px;"/>
-<img src="./src/assets/markdown/albumd.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FalbumC.PNG?alt=media&token=fd356467-0b5b-4c65-a0ef-6ddbef50f1b4" alt="album-a" style="width: 500px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FalbumD.PNG?alt=media&token=8a122fe3-bab5-42cd-ae0b-9bf41321e3e7" alt="album-a" style="width: 500px; margin-left:20px;"/>
 
-<img src="./src/assets/markdown/albume.png" alt="album-a" style="width: 500px;"/>
-<img src="./src/assets/markdown/albumf.png" alt="album-a" style="width: 500px; margin-left:20px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FalbumE.PNG?alt=media&token=f05fbcc5-32a6-4b6d-8532-71bfe5ae7e3b" alt="album-a" style="width: 500px;"/>
+<img src="https://firebasestorage.googleapis.com/v0/b/mini-dashboard-app.appspot.com/o/upload%2FalbumF.PNG?alt=media&token=bf942461-63f6-4da2-9f21-6b2e80597082" alt="album-a" style="width: 500px; margin-left:20px;"/>
 
 </br>  
 
