@@ -12,7 +12,7 @@ export class FirebaseAuthService {
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     afAuth.authState.subscribe((authState) => {
-      console.log(authState);
+      console.log(authState !== null ? authState['_lat'] : 'no-key');
       authState !== null ? 0 : this.router.navigate(['/']);
     });
   }

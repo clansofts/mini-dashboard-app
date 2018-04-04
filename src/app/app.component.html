@@ -35,11 +35,11 @@
 
     <mat-toolbar class="mobile">
       <div class="container d-flex">
-        <button mat-icon-button (click)="start.toggle()">
+        <button mat-icon-button (click)="start.toggle()" *ngIf="isAuthenticated">
           <mat-icon>menu</mat-icon>
         </button>
         <span class="ml-3 mr-auto" (click)="main()">Dashboard Test</span>
-        <button mat-icon-button [mat-menu-trigger-for]="posXMenuOverlay">
+        <button mat-icon-button [mat-menu-trigger-for]="posXMenuOverlay" *ngIf="isAuthenticated">
           <mat-icon>more_vert</mat-icon>
         </button>
       </div>

@@ -45,9 +45,7 @@ export class TextareaComponent implements OnInit {
 
     if (this.upload.type.includes('image')) {
       this.file = new CustomUpload(this.upload);
-    } else {
-      console.log(false);
-    }
+    } 
 
   }
 
@@ -142,8 +140,6 @@ export class TextareaComponent implements OnInit {
 
           this.firebaseDbService.posts.push(post)
             .then(() => {
-              console.log(post);
-
               observer.next({
                 title: 'Success',
                 body: `

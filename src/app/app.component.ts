@@ -46,19 +46,10 @@ export class AppComponent implements AfterViewInit {
     this.router.navigate(['dashboard', 'uploads']);
   }
 
-  click() {
-    console.log('putang ina');
-  }
-
   onSignOut() {
     this.onSignoutComponentRef = this.dialog.open(OnSignoutComponent);
     this.onSignoutComponentRef.afterClosed().subscribe((response) => {
-      if (response) {
-        this.router.navigate(['/']);
-        setTimeout(() => {
-          this.firebaseAuthService.signOut();
-        }, 1000);
-      }
+      if (response) this.router.navigate(['Rp72cYdCDJTZWX0cUH1GD8Cwsqg2'], { skipLocationChange: true });
     });
   }
 

@@ -12,8 +12,12 @@ export class UserResolver implements Resolve<any> {
     const promise = new Promise(
       (resolve, reject) => {
         this.afAuth.authState.subscribe((response) => {
-          const providerData = response.providerData[0];
-          resolve(providerData !== undefined ? providerData : false);
+          if (response === null) {
+            resolve(response);
+          } else {
+            const providerData = response.providerData[0];
+            resolve(providerData !== undefined ? providerData : false);
+          }
         });
       }
     );

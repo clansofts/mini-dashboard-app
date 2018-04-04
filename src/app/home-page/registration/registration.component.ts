@@ -15,6 +15,7 @@ import { User } from '../../common/shared/model/user.model';
 export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
+  isLoading: boolean = false;
 
   constructor(private firebaseDbService: FirebaseDbService, private sharedService: SharedService) { }
 
@@ -29,6 +30,8 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit() {
     if (this.registrationForm.invalid) return;
+
+    this.isLoading = true;
 
     const firstname = this.registrationForm.value['firstname'];
     const lastname = this.registrationForm.value['lastname'];

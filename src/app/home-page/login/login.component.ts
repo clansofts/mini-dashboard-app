@@ -20,13 +20,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   authState: Subscription;
   isClicked: boolean = false;
+  isLoading: boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute, private afAuth: AngularFireAuth, private firebaseAuthService: FirebaseAuthService, private sharedService: SharedService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'email': new FormControl(null, [ Validators.required, Validators.email ]),
-      'password': new FormControl(null, [ Validators.required, Validators.minLength(6) ]),
+      'email': new FormControl('', [ Validators.required, Validators.email ]),
+      'password': new FormControl('', [ Validators.required, Validators.minLength(6) ]),
     });
   }
 
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     this.isClicked = true;
+    this.isLoading = true;
 
     this.firebaseAuthService.signInWithEmailAndPassword(email, password)
       .then((response) => {
@@ -49,9 +51,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       }).catch((e) => {
         this.sharedService.openSnackbar(new Snackbar(e.message, 5000));
         this.router.navigate(['/']);
+        this.loginForm.reset();
       });
-
-    this.loginForm.reset();
   }
 
   logout() {
@@ -59,6 +60,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSignIn() {
+    this.isLoading = true;
     this.authState = this.afAuth.authState.subscribe((state) => {
       state !== null ? this.router.navigate(['dashboard']) : this.router.navigate(['/']);
     });

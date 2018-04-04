@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from "firebase";
 
@@ -15,7 +16,7 @@ export class FirebaseDbService {
   posts: AngularFireList<any>;
   uploads: AngularFireList<any>;
 
-  constructor(private db: AngularFireDatabase, private firebaseAuthService: FirebaseAuthService) {
+  constructor(private router: Router, private db: AngularFireDatabase, private firebaseAuthService: FirebaseAuthService) {
     this.users = db.list<any>('app-users');
     this.posts = db.list<any>('app-posts');
     this.uploads = db.list<any>('app-uploads');
@@ -29,6 +30,8 @@ export class FirebaseDbService {
         const newUser = new User(user.firstname, user.lastname, user.phonenumber, user.gender, user.email, user.password, uid);
 
         this.users.push(newUser);
+
+        this.router.navigate(['dashboard']);
 
       }).catch((e) => 0)
   }

@@ -27,3 +27,18 @@
     }
   }
 }
+
+
+@media (max-width: 575.98px) {
+
+  .container {
+    #main-column {
+      .card-wrapper {
+        .mat-card {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}

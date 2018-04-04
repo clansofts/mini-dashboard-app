@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FirebaseAuthService } from '../../common/core/services/firebase-auth.service';
-
 
 @Component({
   selector: 'app-main-feed',
@@ -10,7 +8,7 @@ import { FirebaseAuthService } from '../../common/core/services/firebase-auth.se
 })
 export class MainFeedComponent implements OnInit {
 
-  constructor(private firebaseAuthService: FirebaseAuthService) { }
+  constructor() { }
 
   ngOnInit() {
   }

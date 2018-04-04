@@ -37,6 +37,15 @@
     .upload-container {
       .mat-card {
         width: 100%;
+        .mat-icon-button {
+          line-break: normal;
+        }
+        [button1] {
+          margin-left: auto;
+        }
+        [button2] {
+          margin-right: auto;
+        }
       }
     }
   }

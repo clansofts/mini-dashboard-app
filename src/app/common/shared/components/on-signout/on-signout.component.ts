@@ -18,6 +18,7 @@ export class OnSignoutComponent implements OnInit {
   }
 
   optionQuery() {
+    this.option = true;
     setTimeout(() => this.onSignoutComponentRef.close(this.option), 1);
   }
 

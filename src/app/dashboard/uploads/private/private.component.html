@@ -9,11 +9,15 @@
           <mat-card-content class="d-flex">
             <div class="upload mx-auto" (click)="isDisabled = true">
               <input type="file" #file multiple size="50" (change)="onChange($event)">
-              <button mat-icon-button color="accent" (click)="file.value = ''" *ngIf="totalSize !== '' && file.value !== ''" [disabled]="isDisabled"
+            </div>
+          </mat-card-content>
+          <mat-card-content class="d-flex m-0">
+            <div class="upload mx-auto" (click)="isDisabled = true">
+              <button mat-icon-button button1 color="accent" (click)="file.value = ''" *ngIf="totalSize !== '' && file.value !== ''" [disabled]="isDisabled"
                 [matTooltip]="'Remove selected files'"
                 [matTooltipPosition]="'above'"
                 ><mat-icon>clear</mat-icon></button>
-              <button mat-icon-button color="accent" (click)="onUpload(0)" [disabled]="isDisabled"
+              <button mat-icon-button button2 color="accent" (click)="onUpload(0)" [disabled]="isDisabled"
                 [matTooltip]="'Upload selected files'"
                 [matTooltipPosition]="'right'"
                 ><mat-icon>file_upload</mat-icon></button>
@@ -22,6 +26,7 @@
           <mat-card-content>
 
             <div *ngFor="let item of list">
+              <br>
               <img class="mx-auto d-block" src="{{ item.url }}" alt="{{ item.name }}">
               <p class="m-0 text-center">{{ item.name }} ({{ item.type }}) - {{ item.newSize }}</p>
               <br>
