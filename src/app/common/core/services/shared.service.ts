@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
 
 import { ISnackBar } from '../../shared/interface/snackbar';
 
 
 @Injectable()
 export class SharedService {
+
+  private horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  private verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+  emailPattern: string = '/\S+@\S+\.\S+/';
+  namePattern: string = "^([ \u00c0-\u01ffa-zA-Z])+$";
 
   constructor(private snackbar: MatSnackBar) { }
 
@@ -19,8 +25,8 @@ export class SharedService {
   openSnackbar(snack: ISnackBar) {
     const config = new MatSnackBarConfig();
     config.duration = snack.duration;
-    config.horizontalPosition = snack.horizontalPosition;
-    config.verticalPosition = snack.verticalPosition;
+    config.horizontalPosition = snack.horizontalPosition || this.horizontalPosition;
+    config.verticalPosition = snack.verticalPosition || this.verticalPosition;
 
     this.snackbar.open(snack.message, 'X', config)
   }

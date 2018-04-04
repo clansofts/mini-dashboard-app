@@ -5,6 +5,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { FirebaseAuthService } from '../../common/core/services/firebase-auth.service';
+import { SharedService } from '../../common/core/services/shared.service';
+
+import { Snackbar } from '../../common/shared/model/snackbar.model';
 
 
 @Component({
@@ -18,12 +21,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   authState: Subscription;
   isClicked: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private afAuth: AngularFireAuth, private firebaseAuthService: FirebaseAuthService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private afAuth: AngularFireAuth, private firebaseAuthService: FirebaseAuthService, private sharedService: SharedService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'email': new FormControl(null),
-      'password': new FormControl(null),
+      'email': new FormControl(null, [ Validators.required, Validators.email ]),
+      'password': new FormControl(null, [ Validators.required, Validators.minLength(6) ]),
     });
   }
 
@@ -34,6 +37,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    if (this.loginForm.invalid) return;
+
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     this.isClicked = true;
@@ -42,9 +47,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       .then((response) => {
         this.router.navigate(['dashboard']);
       }).catch((e) => {
+        this.sharedService.openSnackbar(new Snackbar(e.message, 5000));
         this.router.navigate(['/']);
-        console.log(e.message);
       });
+
     this.loginForm.reset();
   }
 

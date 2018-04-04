@@ -7,7 +7,7 @@
           <!-- <mat-card-title class="text-center">Upload files / photos here</mat-card-title>
           <mat-divider [inset]="true" class="mb-3"></mat-divider> -->
           <mat-card-content class="d-flex">
-            <div class="upload mx-auto">
+            <div class="upload mx-auto" (click)="isDisabled = true">
               <input type="file" #file multiple size="50" (change)="onChange($event)">
               <button mat-icon-button color="accent" (click)="file.value = ''" *ngIf="totalSize !== '' && file.value !== ''" [disabled]="isDisabled"
                 [matTooltip]="'Remove selected files'"

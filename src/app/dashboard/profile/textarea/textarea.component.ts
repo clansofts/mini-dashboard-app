@@ -10,7 +10,10 @@ import { IPost } from '../../../common/shared/interface/post';
 
 import { FirebaseAuthService } from '../../../common/core/services/firebase-auth.service';
 import { FirebaseDbService } from '../../../common/core/services/firebase-db.service';
+import { SharedService } from '../../../common/core/services/shared.service';
 import { SnotifyService } from 'ng-snotify';
+
+import { Snackbar } from '../../../common/shared/model/snackbar.model';
 
 
 @Component({
@@ -26,7 +29,7 @@ export class TextareaComponent implements OnInit {
   textarea: string;
   isDisabled: boolean = false;
 
-  constructor(private firebaseAuthService: FirebaseAuthService, private firebaseDbService: FirebaseDbService,private snotifyService: SnotifyService) {
+  constructor(private firebaseAuthService: FirebaseAuthService, private firebaseDbService: FirebaseDbService, private sharedService: SharedService, private snotifyService: SnotifyService) {
     this.textarea = '';
     this.isDisabled = false
   }
@@ -49,6 +52,24 @@ export class TextareaComponent implements OnInit {
   }
 
   onPost() {
+    const uploadUndefined = this.upload === undefined;
+    const textareaLimit = this.textarea.length < 7;
+    const isAnonymous = this.firebaseAuthService.isAnonymous;
+    const message = 'User: anonymous is not authorized to perform';
+    const duration = 5000;
+    const snackbar = new Snackbar(message, duration);
+    const config = {
+      showProgressBar: false,
+      closeOnClick: true,
+      position: 'leftBottom',
+      timeout: 7000
+    };
+
+    if (isAnonymous)
+      return this.sharedService.openSnackbar(snackbar);
+    if (uploadUndefined && textareaLimit)
+      return this.snotifyService.error('Field less than 7 characters or no photo attached', 'Field error', config)
+
     this.file = this.targetFiles !== undefined ? this.file = new CustomUpload(this.upload) : undefined;
 
     const uid = this.firebaseAuthService.uid;

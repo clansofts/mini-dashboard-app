@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { FirebaseDbService } from '../../common/core/services/firebase-db.service';
+import { SharedService } from '../../common/core/services/shared.service';
 
 import { User } from '../../common/shared/model/user.model';
 
@@ -15,24 +16,24 @@ export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
 
-  constructor(private firebaseDbService: FirebaseDbService) { }
+  constructor(private firebaseDbService: FirebaseDbService, private sharedService: SharedService) { }
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
-      'firstname': new FormControl(),
-      'lastname': new FormControl(),
-      'phonenumber': new FormControl(),
-      'gender': new FormControl(),
-      'email': new FormControl(),
-      'password': new FormControl()
+      'firstname': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.pattern(this.sharedService.namePattern)]),
+      'lastname': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.pattern(this.sharedService.namePattern)]),
+      'email': new FormControl(null, [ Validators.required, Validators.email ]),
+      'password': new FormControl(null, [ Validators.required, Validators.minLength(6) ])
     })
   }
 
   onSubmit() {
+    if (this.registrationForm.invalid) return;
+
     const firstname = this.registrationForm.value['firstname'];
     const lastname = this.registrationForm.value['lastname'];
-    const phonenumber = this.registrationForm.value['phonenumber'];
-    const gender = this.registrationForm.value['gender'];
+    const phonenumber = '';
+    const gender = '';
     const email = this.registrationForm.value['email'];
     const password = this.registrationForm.value['password'];
 

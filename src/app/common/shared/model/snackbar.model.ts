@@ -3,8 +3,8 @@ import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@ang
 export class Snackbar {
   constructor(
     public message: string,
-    public horizontalPosition: MatSnackBarHorizontalPosition,
-    public verticalPosition: MatSnackBarVerticalPosition,
     public duration: number,
+    public horizontalPosition?: MatSnackBarHorizontalPosition,
+    public verticalPosition?: MatSnackBarVerticalPosition,
   ) {}
 }

@@ -1,5 +1,5 @@
 <h5 class="text-center mb-4">Are you sure you want to signout?</h5>
-<div class="d-flex">
-  <button mat-raised-button color="accent" class="ml-auto mr-2" (click)="optionQuery(false)">STAY</button>
-  <button mat-raised-button color="warn" class="mr-auto ml-2" (click)="optionQuery(true)">SIGNOUT</button>
+<div class="d-flex" (keypress)=handleKeyPress($event)>
+  <button mat-raised-button color="accent" class="ml-auto mr-2" (click)="optionQuery()">STAY</button>
+  <button mat-raised-button color="warn" class="mr-auto ml-2" (click)="optionQuery()">SIGNOUT</button>
 </div>

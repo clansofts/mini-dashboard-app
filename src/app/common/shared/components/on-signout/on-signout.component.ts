@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { ENTER } from '@angular/cdk/keycodes';
 
 
 @Component({
@@ -9,13 +10,20 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 })
 export class OnSignoutComponent implements OnInit {
 
+  option: boolean = false;
+
   constructor(public onSignoutComponentRef: MatDialogRef<OnSignoutComponent>) { }
 
   ngOnInit() {
   }
 
-  optionQuery(option: boolean) {
-    this.onSignoutComponentRef.close(option);
+  optionQuery() {
+    setTimeout(() => this.onSignoutComponentRef.close(this.option), 1);
+  }
+
+  handleKeyPress(event: KeyboardEvent) {
+    const option = [ENTER].includes(event.keyCode);
+    this.option = option ? option : !option;
   }
 
 }

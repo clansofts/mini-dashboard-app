@@ -42,7 +42,7 @@ export class PrivateComponent implements OnInit {
   }
 
   onRemovePhoto(photo: any) {
-    this.firebaseDbService.removeFile(photo)
+    this.firebaseDbService.removeFile(photo);
   }
 
   onChange(event: Event) {
@@ -73,6 +73,13 @@ export class PrivateComponent implements OnInit {
   }
 
   onUpload(index: number) {
+
+    const isAnonymous = this.firebaseAuthService.isAnonymous;
+    const message = 'User: anonymous is not authorized to perform';
+    const duration = 5000;
+    const snackbar = new Snackbar(message, duration);
+
+    if (isAnonymous) return this.sharedService.openSnackbar(snackbar);
 
     this.isDisabled = true;
 

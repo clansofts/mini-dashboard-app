@@ -9,8 +9,6 @@ import { MainFeedComponent } from './main-feed.component';
 import { PostsComponent } from './posts/posts.component';
 import { TextareaComponent } from './textarea/textarea.component';
 
-import { FirebaseAuthService } from '../../common/core/services/firebase-auth.service';
-
 
 @NgModule({
   imports: [
@@ -24,8 +22,5 @@ import { FirebaseAuthService } from '../../common/core/services/firebase-auth.se
     PostsComponent,
     TextareaComponent,
   ],
-  providers: [
-    FirebaseAuthService
-  ]
 })
 export class MainFeedModule { }

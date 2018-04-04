@@ -2,7 +2,7 @@ import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@ang
 
 export interface ISnackBar {
   message: string;
-  horizontalPosition: MatSnackBarHorizontalPosition;
-  verticalPosition: MatSnackBarVerticalPosition;
   duration: number;
+  horizontalPosition?: MatSnackBarHorizontalPosition;
+  verticalPosition?: MatSnackBarVerticalPosition;
 }

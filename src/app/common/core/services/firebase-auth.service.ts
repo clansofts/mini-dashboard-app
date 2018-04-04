@@ -22,6 +22,11 @@ export class FirebaseAuthService {
     return authnticated;
   }
 
+  get isAnonymous(): boolean {
+    const anonymous = this.afAuth.auth.currentUser.isAnonymous;
+    return anonymous;
+  }
+
   get uid(): string {
     let currentUser = this.afAuth.auth.currentUser;
     return currentUser !== null ? this.afAuth.auth.currentUser.uid : 'uninitialized';
